@@ -1,10 +1,11 @@
-
 function getMoveName(moveId){
-	if(moveId === 1) {
+	/*parseInt(moveId);
+	console.log('move id to: ', moveId);*/
+	if(moveId == 1) {
 		return 'kamień';
-	} else if (moveId === 2) {
+	} else if (moveId == 2) {
 		return 'papier';
-	} else if (moveId === 3) {
+	} else if (moveId == 3) {
 		return 'nożyce';
 	}
 }
@@ -20,8 +21,6 @@ printMessage('Mój ruch to: '+ computerMove );
 let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
 
 console.log('Gracz wpisał: '+ playerInput);
-console.log(playerInput);
-
 
 let playerMove = getMoveName(playerInput);
 
