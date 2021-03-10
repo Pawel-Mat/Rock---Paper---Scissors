@@ -1,7 +1,9 @@
 {
 	let computerScore = 0;
 	let playerScore = 0;
-
+	const playerHand = document.querySelector('.player-move');
+	const computerHand = document.querySelector('.computer-move');
+	
 	function playGame(playerInput){
 		function getMoveName(moveId){
 			switch(moveId) {
@@ -24,8 +26,6 @@
 		}
 
 		const winner = document.querySelector('.winner');
-		const playerHand = document.querySelector('.player-move');
-		const computerHand = document.querySelector('.computer-move');
 		
 		function displayResult(argComputerMove, argPlayerMove){
 			
@@ -37,63 +37,27 @@
 				winner.textContent= 'You win!';	
 				playerScore++;
 				updateScore();
-				playerHand.classList.remove('fa-hand-peace');
-				playerHand.classList.remove('fa-hand-rock');
-				playerHand.classList.add('fa-hand-paper');
-				computerHand.classList.remove('fa-hand-paper');
-				computerHand.classList.remove('fa-hand-peace');
-				computerHand.classList.add('fa-hand-rock');
 				return;
 			}	else if (argComputerMove === 'paper' && argPlayerMove === 'scissors'){
 				winner.textContent= 'You win!';
 				playerScore++;
 				updateScore();
-				playerHand.classList.remove('fa-hand-paper');
-				playerHand.classList.remove('fa-hand-rock');
-				playerHand.classList.add('fa-hand-peace');
-				computerHand.classList.remove('fa-hand-peace');
-				computerHand.classList.remove('fa-hand-rock');
-				computerHand.classList.add('fa-hand-paper');
 			} else if (argComputerMove === 'scissors' && argPlayerMove === 'rock'){
 				winner.textContent= 'You win!';
 				playerScore++;
 				updateScore();
-				playerHand.classList.remove('fa-hand-paper');
-				playerHand.classList.remove('fa-hand-peace');
-				playerHand.classList.add('fa-hand-rock');
-				computerHand.classList.remove('fa-hand-paper');
-				computerHand.classList.remove('fa-hand-rock');
-				computerHand.classList.add('fa-hand-peace');
 			} else if (argComputerMove === 'rock' && argPlayerMove === 'scissors'){
 				winner.textContent= 'You loose!';
 				computerScore++;
 				updateScore();
-				playerHand.classList.remove('fa-hand-paper');
-				playerHand.classList.remove('fa-hand-rock');
-				playerHand.classList.add('fa-hand-peace');
-				computerHand.classList.remove('fa-hand-paper');
-				computerHand.classList.remove('fa-hand-peace');
-				computerHand.classList.add('fa-hand-rock');
 			} else if (argComputerMove === 'paper' && argPlayerMove === 'rock'){
 				winner.textContent= 'You loose!';
 				computerScore++;
 				updateScore();
-				playerHand.classList.remove('fa-hand-paper');
-				playerHand.classList.remove('fa-hand-peace');
-				playerHand.classList.add('fa-hand-rock');
-				computerHand.classList.remove('fa-hand-peace');
-				computerHand.classList.remove('fa-hand-rock');
-				computerHand.classList.add('fa-hand-paper');
 			} else if (argComputerMove === 'scissors' && argPlayerMove === 'paper'){
 				winner.textContent= 'You loose!';
 				computerScore++;
 				updateScore();
-				playerHand.classList.remove('fa-hand-peace');
-				playerHand.classList.remove('fa-hand-rock');
-				playerHand.classList.add('fa-hand-paper');
-				computerHand.classList.remove('fa-hand-paper');
-				computerHand.classList.remove('fa-hand-rock');
-				computerHand.classList.add('fa-hand-peace');
 			} else if (argPlayerMove === 'undefined move'){
 				winner.textContent= 'Choose number 1, 2 or 3';
 				return;
@@ -101,8 +65,21 @@
 			
 		}
 
-			const randomNumber = Math.floor(Math.random() * 3 + 1),
-			computerMove = getMoveName(randomNumber),
+			const randomNumber = Math.floor(Math.random() * 3 + 1);
+			if(randomNumber === 1 ) {
+				computerHand.classList.remove('fa-hand-paper');
+				computerHand.classList.remove('fa-hand-peace');
+				computerHand.classList.add('fa-hand-rock');
+			} else if ( randomNumber === 2) {
+				computerHand.classList.remove('fa-hand-peace');
+				computerHand.classList.remove('fa-hand-rock');
+				computerHand.classList.add('fa-hand-paper');
+			} else {
+				computerHand.classList.remove('fa-hand-paper');
+				computerHand.classList.remove('fa-hand-rock');
+				computerHand.classList.add('fa-hand-peace');
+			}
+			computerMove = getMoveName(randomNumber);
 			playerMove = getMoveName(playerInput);
 			
 
@@ -112,13 +89,20 @@
 
 	document.querySelector('.play-rock').addEventListener('click', function(){
 		playGame(1);
-		
+				playerHand.classList.remove('fa-hand-paper');
+				playerHand.classList.remove('fa-hand-peace');
+				playerHand.classList.add('fa-hand-rock');
 	});
 	document.querySelector('.play-paper').addEventListener('click', function(){
 		playGame(2);
-
+				playerHand.classList.remove('fa-hand-peace');
+				playerHand.classList.remove('fa-hand-rock');
+				playerHand.classList.add('fa-hand-paper');
 	});
 	document.querySelector('.play-scissors').addEventListener('click', function(){
 		playGame(3);
+				playerHand.classList.remove('fa-hand-paper');
+				playerHand.classList.remove('fa-hand-rock');
+				playerHand.classList.add('fa-hand-peace');
 	});
 }
