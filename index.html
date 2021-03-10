@@ -1,19 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Kamień, papier, nożyce</title>
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-	<div class="container">
-		<div class="buttons" id="buttons"></div>
-			<button class="btn rock" id="play-rock">Kamień</button>
-			<button class="btn paper" id="play-paper">Papier</button>
-			<button class="btn scissors" id="play-scissors">Nożyce</button><br><br>
-		<div id="messages" class="messages"></div>
-	</div>
-	<script src="js/functions.js"></script>
-	<script src="js/script.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Rock - Paper - Scissors</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<section class="game">
+			<div class="title"><h1> Rock - Paper - Scissors </h1></div>
+			<div class="row">
+
+				<div class="score">
+					<div class="player-score">
+						<h2>Player</h2>
+						<p>0</p>
+					</div>
+					<div class="computer-score">
+						<h2>Computer</h2>
+						<p>0</p>
+					</div>
+				</div>
+	
+				<div class="match">
+					<h2 class="winner">Choose an option</h2>
+					<div class="hands">
+						<div class="player-hand"><i class="far fa-hand-rock player-move"></i></div>
+						<div class="computer-hand"><i class="far fa-hand-rock computer-move"></i></i></div>
+					</div>
+					<div class="options">
+						<button class="play-rock">rock</button>
+						<button class="play-paper">paper</button>
+						<button class="play-scissors">scissors</button>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="container">
+				<div class="buttons" id="buttons"></div>
+					<button class="btn rock" id="play-rock"><i class="far fa-hand-rock"></i></button>
+					<button class="btn paper" id="play-paper"><i class="far fa-hand-paper"></i></button>
+					<button class="btn scissors" id="play-scissors"><i class="far fa-hand-scissors"></i></button><br><br>
+				<div id="messages" class="messages"></div>
+			</div> -->
+
+		</section>
+		<script src="js/script.js"></script>
+	</body>
 </html>

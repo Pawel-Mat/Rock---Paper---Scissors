@@ -1,43 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-	font-size: 40px;
-	color: black;
+  color: #f39c12;
 }
-.container {
-	max-width: 1140px;
-    padding: 0 20px;
-    margin: 40px auto;
-}
-.btn {
-	position: relative;
-	left: 50%;
-    transform: translate(-180%);
-	margin-right: 40px;
-	border: 2px solid black;
-	width: 150px;
-	height: 150px;
-	border-radius: 500px;
-	font-size: inherit;
-	cursor: pointer;
-}
-.btn:hover {
-	opacity: 0.6;
-}
-.messages {
-	position: absolute;
-	width: 100%;
-   	left: 50%;
-	transform: translate(-50%);
-	text-align: center;
-	line-height: 1.5;
-}
-.rock {
-	background: #9aaacc;
-}
-.paper {
-	background: whitesmoke;
-	
-}
-.scissors {
-	background: #dfe4ea;
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vh;
+
+  & h1 {
+    font-size: 40px;
+  }
 }
 
+.row {
+  position: absolute;
+  border: 3px dotted rgb(219, 219, 219);
+  width: 80vh;
+  height: 70vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section {
+  height: 100vw;
+  background: #212f3d;
+}
+
+.score {
+  height: 10vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  & h2 {
+    font-size: 30px;
+  }
+
+  & p {
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+  }
+}
+
+.match {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: 50vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.winner {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 55px;
+}
+.hands {
+  display: flex;
+  font-size: 150px;
+  justify-content: space-between;
+  padding: 20px;
+  color: #bdc3c7;
+}
+
+.player-hand {
+  transform: rotate(90deg);
+}
+.computer-hand {
+  transform: rotate(-90deg);
+}
+
+.options {
+  display: flex;
+  justify-content: space-around;
+  // text-align: center;
+  width: 25vw;
+  margin: auto;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  border-radius: 3px;
+  // background: none;
+  background: #f39c12;
+  border: none;
+  font-size: 20px;
+}

@@ -1,52 +1,124 @@
 {
+	let computerScore = 0;
+	let playerScore = 0;
+
 	function playGame(playerInput){
-		clearMessages();
 		function getMoveName(moveId){
 			switch(moveId) {
 				case 1:
-					return 'kamień';
+					return 'rock';
 				case 2:
-					return 'papier';
+					return 'paper';
 				case 3:
-					return 'nożyce';
+					return 'scissors';
 				default:
-					return 'nieznany ruch';
+					return 'undefined move';
 			}
 		}
-		function displayResult(argComputerMove, argPlayerMove){
-			if(argComputerMove == argPlayerMove){
-				printMessage('Remis!');
-			} else if (argComputerMove === 'kamień' && argPlayerMove === 'papier'){
-				printMessage('Ty wygrywasz!');	
-			}	else if (argComputerMove === 'papier' && argPlayerMove === 'nożyce'){
-				printMessage('Ty wygrywasz!');
-			} else if (argComputerMove === 'nożyce' && argPlayerMove === 'kamień'){
-				printMessage('Ty wygrywasz!');
-			} else if (argComputerMove === 'kamień' && argPlayerMove === 'nożyce'){
-				printMessage('Przegrałeś..');
-			} else if (argComputerMove === 'papier' && argPlayerMove === 'kamień'){
-				printMessage('Przegrałeś..');
-			} else if (argComputerMove === 'nożyce' && argPlayerMove === 'papier'){
-				printMessage('Przegrałeś..');
-			} else if (argPlayerMove === 'nieznany ruch'){
-				printMessage('Wybierz liczbę 1, 2 lub 3');
-			}
+		
+		const updateScore = () => {
+			const playerWin = document.querySelector('.player-score p');
+			const computerWin = document.querySelector('.computer-score p');
+			playerWin.textContent = playerScore;
+			computerWin.textContent = computerScore;
 		}
 
-		const randomNumber = Math.floor(Math.random() * 3 + 1),
+		const winner = document.querySelector('.winner');
+		const playerHand = document.querySelector('.player-move');
+		const computerHand = document.querySelector('.computer-move');
+		
+		function displayResult(argComputerMove, argPlayerMove){
+			
+			
+			if(argComputerMove == argPlayerMove){
+				winner.textContent= 'Draw!';
+				return;
+			} else if (argComputerMove === 'rock' && argPlayerMove === 'paper'){
+				winner.textContent= 'You win!';	
+				playerScore++;
+				updateScore();
+				playerHand.classList.remove('fa-hand-peace');
+				playerHand.classList.remove('fa-hand-rock');
+				playerHand.classList.add('fa-hand-paper');
+				computerHand.classList.remove('fa-hand-paper');
+				computerHand.classList.remove('fa-hand-peace');
+				computerHand.classList.add('fa-hand-rock');
+				return;
+			}	else if (argComputerMove === 'paper' && argPlayerMove === 'scissors'){
+				winner.textContent= 'You win!';
+				playerScore++;
+				updateScore();
+				playerHand.classList.remove('fa-hand-paper');
+				playerHand.classList.remove('fa-hand-rock');
+				playerHand.classList.add('fa-hand-peace');
+				computerHand.classList.remove('fa-hand-peace');
+				computerHand.classList.remove('fa-hand-rock');
+				computerHand.classList.add('fa-hand-paper');
+			} else if (argComputerMove === 'scissors' && argPlayerMove === 'rock'){
+				winner.textContent= 'You win!';
+				playerScore++;
+				updateScore();
+				playerHand.classList.remove('fa-hand-paper');
+				playerHand.classList.remove('fa-hand-peace');
+				playerHand.classList.add('fa-hand-rock');
+				computerHand.classList.remove('fa-hand-paper');
+				computerHand.classList.remove('fa-hand-rock');
+				computerHand.classList.add('fa-hand-peace');
+			} else if (argComputerMove === 'rock' && argPlayerMove === 'scissors'){
+				winner.textContent= 'You loose!';
+				computerScore++;
+				updateScore();
+				playerHand.classList.remove('fa-hand-paper');
+				playerHand.classList.remove('fa-hand-rock');
+				playerHand.classList.add('fa-hand-peace');
+				computerHand.classList.remove('fa-hand-paper');
+				computerHand.classList.remove('fa-hand-peace');
+				computerHand.classList.add('fa-hand-rock');
+			} else if (argComputerMove === 'paper' && argPlayerMove === 'rock'){
+				winner.textContent= 'You loose!';
+				computerScore++;
+				updateScore();
+				playerHand.classList.remove('fa-hand-paper');
+				playerHand.classList.remove('fa-hand-peace');
+				playerHand.classList.add('fa-hand-rock');
+				computerHand.classList.remove('fa-hand-peace');
+				computerHand.classList.remove('fa-hand-rock');
+				computerHand.classList.add('fa-hand-paper');
+			} else if (argComputerMove === 'scissors' && argPlayerMove === 'paper'){
+				winner.textContent= 'You loose!';
+				computerScore++;
+				updateScore();
+				playerHand.classList.remove('fa-hand-peace');
+				playerHand.classList.remove('fa-hand-rock');
+				playerHand.classList.add('fa-hand-paper');
+				computerHand.classList.remove('fa-hand-paper');
+				computerHand.classList.remove('fa-hand-rock');
+				computerHand.classList.add('fa-hand-peace');
+			} else if (argPlayerMove === 'undefined move'){
+				winner.textContent= 'Choose number 1, 2 or 3';
+				return;
+			}
+			
+		}
+
+			const randomNumber = Math.floor(Math.random() * 3 + 1),
 			computerMove = getMoveName(randomNumber),
 			playerMove = getMoveName(playerInput);
-		printMessage('Mój ruch to: '+ computerMove );
-		printMessage('Twój ruch to: ' + playerMove);
+			
+
 		displayResult(computerMove, playerMove);
 	}
-	document.getElementById('play-rock').addEventListener('click', function(){
-		playGame(1)
+
+
+	document.querySelector('.play-rock').addEventListener('click', function(){
+		playGame(1);
+		
 	});
-	document.getElementById('play-paper').addEventListener('click', function(){
-		playGame(2)
+	document.querySelector('.play-paper').addEventListener('click', function(){
+		playGame(2);
+
 	});
-	document.getElementById('play-scissors').addEventListener('click', function(){
-		playGame(3)
+	document.querySelector('.play-scissors').addEventListener('click', function(){
+		playGame(3);
 	});
 }
