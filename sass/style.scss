@@ -5,6 +5,7 @@
 }
 body {
   color: #f39c12;
+  font-family: "RocknRoll One", sans-serif;
 }
 .title {
   display: flex;
@@ -19,16 +20,18 @@ body {
 
 .row {
   position: absolute;
-  border: 3px dotted rgb(219, 219, 219);
+  border: 6px double rgb(219, 219, 219);
   width: 80vh;
   height: 70vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-section {
-  height: 100vw;
-  background: #212f3d;
+
+.game {
+  height: 100vh;
+  background-image: url("../images/black-texture.jpg");
+  background-size: cover;
 }
 
 .score {
@@ -38,7 +41,7 @@ section {
   align-items: center;
 
   & h2 {
-    font-size: 30px;
+    font-size: 20px;
   }
 
   & p {
@@ -62,7 +65,7 @@ section {
 .winner {
   text-align: center;
   font-size: 30px;
-  margin-bottom: 55px;
+  margin: 20px 0 55px 0;
 }
 .hands {
   display: flex;
@@ -82,17 +85,53 @@ section {
 .options {
   display: flex;
   justify-content: space-around;
-  // text-align: center;
   width: 25vw;
   margin: auto;
 }
 
 button {
-  width: 120px;
+  width: 90px;
   height: 40px;
   border-radius: 3px;
-  // background: none;
   background: #f39c12;
   border: none;
   font-size: 20px;
+  margin: 10px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  font-family: "RocknRoll One", sans-serif;
+}
+
+button:active {
+  background-color: #b16f06;
+  box-shadow: 0 2px rgb(0, 20, 39);
+  transform: translateY(4px);
+}
+.options button {
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.active {
+  background-color: #b16f06;
+  opacity: 0.7;
+}
+
+.game-mode {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.game-mode button {
+  width: 120px;
+  height: 30px;
+  font-size: 16px;
 }
