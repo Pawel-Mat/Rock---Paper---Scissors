@@ -3,6 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+// html {
+//   font-size: 100%;
+// }
+
 body {
   color: #f39c12;
   font-family: "RocknRoll One", sans-serif;
@@ -14,18 +19,19 @@ body {
   height: 12vh;
 
   & h1 {
-    font-size: 40px;
+    font-size: 3rem;
   }
 }
 
 .row {
   position: absolute;
   border: 6px double rgb(219, 219, 219);
-  width: 80vh;
+  width: 50vw;
   height: 70vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 1rem;
 }
 
 .game {
@@ -35,18 +41,18 @@ body {
 }
 
 .score {
-  height: 10vw;
+  height: 10vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
 
   & h2 {
-    font-size: 20px;
+    font-size: 2rem;
   }
 
   & p {
     text-align: center;
-    font-size: 25px;
+    font-size: 2rem;
     padding: 10px;
   }
 }
@@ -64,14 +70,14 @@ body {
 
 .winner {
   text-align: center;
-  font-size: 30px;
+  font-size: 2rem;
   margin: 20px 0 55px 0;
 }
 .hands {
   display: flex;
-  font-size: 150px;
+  font-size: 10rem;
   justify-content: space-between;
-  padding: 20px;
+  padding: 1.2rem;
   color: #bdc3c7;
 }
 
@@ -90,12 +96,12 @@ body {
 }
 
 button {
-  width: 90px;
-  height: 40px;
+  width: 6rem;
+  height: 2.6rem;
   border-radius: 3px;
   background: #f39c12;
   border: none;
-  font-size: 20px;
+  font-size: 1.2rem;
   margin: 10px;
   outline: none;
   cursor: pointer;
@@ -131,7 +137,30 @@ button:active {
 }
 
 .game-mode button {
-  width: 120px;
-  height: 30px;
-  font-size: 16px;
+  width: 8rem;
+  height: 1.5rem;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 780px) {
+  html {
+    font-size: 12px;
+  }
+
+  .row {
+    position: relative;
+    border: 6px double rgb(219, 219, 219);
+    width: 100vw;
+    height: 84vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .title {
+    height: 8vh;
+
+    & h1 {
+      font-size: 2rem;
+    }
+  }
 }
